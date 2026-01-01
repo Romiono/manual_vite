@@ -1,6 +1,7 @@
 import {ConfigEnv, defineConfig, UserConfig} from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
+import svgr from "vite-plugin-svgr";
 
 type ViteConfig = Omit<ConfigEnv, 'mode'> & {
     mode: 'development' | 'production',
@@ -11,12 +12,14 @@ export default defineConfig(({ mode }: ViteConfig): UserConfig => {
     return {
         root: path.resolve(__dirname, 'src'),
         base: './',
+        publicDir: path.resolve(__dirname, 'public'),
 
         resolve: {
           alias: {
               '@' : path.resolve(__dirname, './src'),
           },
         },
+
         build: {
             outDir: mode === 'production' ? path.resolve(__dirname, 'dist') : path.resolve(__dirname, 'dist-dev'),
             emptyOutDir: true,
@@ -29,6 +32,14 @@ export default defineConfig(({ mode }: ViteConfig): UserConfig => {
                 localsConvention: "camelCase",
             },
         },
-        plugins: [react()]
+        plugins: [
+            svgr({
+                svgrOptions: {
+                    icon: true,
+                    ref: true,
+                },
+            }),
+            react(),
+        ]
     }
 });

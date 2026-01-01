@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 export const App = () => {
     return (
         <div className={styles.app}>
-            <Link to="/about">о нас</Link>
+            <Link to="/about">Ленивый чанк</Link>
+            <Link to="/assets">Ассеты</Link>
             <Outlet />
         </div>
     );
