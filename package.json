@@ -10,9 +10,6 @@
         "lint": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\" && eslint . --fix",
         "prepare": "husky"
     },
-    "lint-staged": {
-        "**/*": "prettier --write --ignore-unknown"
-    },
     "homepage": "https://github.com/Romiono/manual_vite#readme",
     "repository": {
         "type": "git",
