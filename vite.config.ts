@@ -20,7 +20,10 @@ export default defineConfig(({ mode }: ViteConfig): UserConfig => {
 		},
 
 		build: {
-			outDir: mode === 'production' ? path.resolve(__dirname, 'dist') : path.resolve(__dirname, 'dist-dev'),
+			outDir:
+				mode === 'production'
+					? path.resolve(__dirname, 'dist')
+					: path.resolve(__dirname, 'dist-dev'),
 			emptyOutDir: true,
 			sourcemap: true,
 		},
