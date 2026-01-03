@@ -10,10 +10,10 @@
         "lint": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\" && eslint . --fix",
         "prepare": "husky"
     },
-    "homepage": "https://github.com/Romiono/manual_vite#readme",
+    "homepage": "https://github.com/Romiono/spa-template#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Romiono/manual_vite.git"
+        "url": "git+https://github.com/Romiono/spa-template.git"
     },
     "keywords": [],
     "author": "",
