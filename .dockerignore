@@ -1,8 +1,26 @@
 node_modules
+package-lock.json
 
-shelf
 .idea
 .vscode
+shelf
 
 dist
 dist-dev
+
+.git
+.gitignore
+
+.husky
+
+eslint.config.mts
+.prettierrc
+.prettierignore
+
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+.env
+*.log
+README.md
