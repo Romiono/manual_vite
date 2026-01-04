@@ -6,6 +6,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "skipLibCheck": true,
+        "verbatimModuleSyntax": true,
 
         "module": "ESNext",
         "moduleResolution": "bundler",

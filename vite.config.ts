@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { ConfigEnv, defineConfig, UserConfig } from 'vite';
+import { type ConfigEnv, defineConfig, type UserConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
 type ViteConfig = Omit<ConfigEnv, 'mode'> & {

@@ -7,88 +7,104 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-	eslintConfigPrettierFlat,
-	tseslint.configs.recommended,
-	pluginReact.configs.flat.recommended,
+    eslintConfigPrettierFlat,
+    tseslint.configs.recommended,
+    pluginReact.configs.flat.recommended,
 
-	{
-		ignores: ['node_modules/**', 'dist/**', '.idea/**', '.vscode/**'],
-	},
+    {
+        ignores: ['node_modules/**', 'dist/**', '.idea/**', '.vscode/**'],
+    },
 
-	{
-		files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-		extends: ['js/recommended'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			globals: {
-				...globals.browser,
-				...globals.node,
-			},
-			parserOptions: {
-				ecmaFeatures: {
-					jsx: true,
-				},
-			},
-		},
-		settings: {
-			react: {
-				version: 'detect',
-			},
-		},
-		plugins: {
-			js,
-		},
-		rules: {
-			'arrow-parens': ['error', 'always'],
-			'comma-dangle': [
-				'error',
-				{
-					arrays: 'always-multiline',
-					objects: 'always-multiline',
-					imports: 'always-multiline',
-					exports: 'always-multiline',
-					functions: 'always-multiline',
-				},
-			],
-			curly: ['error', 'all'],
-			semi: ['error', 'always'],
-			quotes: ['error', 'single', { avoidEscape: true }],
-		},
-	},
+    {
+        files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+        extends: ['js/recommended'],
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                project: './tsconfig.json',
+                ecmaFeatures: {
+                    jsx: true,
+                },
+            },
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+            },
+        },
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
+        plugins: {
+            js,
+        },
+        rules: {
+            'arrow-parens': ['error', 'always'],
+            'comma-dangle': [
+                'error',
+                {
+                    arrays: 'always-multiline',
+                    objects: 'always-multiline',
+                    imports: 'always-multiline',
+                    exports: 'always-multiline',
+                    functions: 'always-multiline',
+                },
+            ],
+            '@typescript-eslint/consistent-type-imports': [
+                'error',
+                {
+                    prefer: 'type-imports',
+                    disallowTypeAnnotations: true,
+                    fixStyle: 'inline-type-imports',
+                },
+            ],
+            '@typescript-eslint/consistent-type-exports': [
+                'error',
+                {
+                    fixMixedExportsWithInlineTypeSpecifier: true,
+                },
+            ],
+            curly: ['error', 'all'],
+            semi: ['error', 'always'],
+            quotes: ['error', 'single', { avoidEscape: true }],
+        },
+    },
 
-	{
-		rules: {
-			'react/react-in-jsx-scope': 'off',
-			'react/jsx-wrap-multilines': [
-				'error',
-				{
-					declaration: 'parens-new-line',
-					assignment: 'parens-new-line',
-					return: 'parens-new-line',
-					arrow: 'parens-new-line',
-					condition: 'parens-new-line',
-					logical: 'parens-new-line',
-					prop: 'parens-new-line',
-				},
-			],
-			'react/jsx-sort-props': [
-				'error',
-				{
-					callbacksLast: true,
-					shorthandFirst: true,
-					ignoreCase: true,
-					reservedFirst: true,
-				},
-			],
-		},
-	},
+    {
+        rules: {
+            'react/react-in-jsx-scope': 'off',
+            'react/jsx-wrap-multilines': [
+                'error',
+                {
+                    declaration: 'parens-new-line',
+                    assignment: 'parens-new-line',
+                    return: 'parens-new-line',
+                    arrow: 'parens-new-line',
+                    condition: 'parens-new-line',
+                    logical: 'parens-new-line',
+                    prop: 'parens-new-line',
+                },
+            ],
+            'react/jsx-sort-props': [
+                'error',
+                {
+                    callbacksLast: true,
+                    shorthandFirst: true,
+                    ignoreCase: true,
+                    reservedFirst: true,
+                },
+            ],
+        },
+    },
 
-	{
-		plugins: { 'simple-import-sort': eslintPluginSimpleImportSort },
-		rules: {
-			'simple-import-sort/imports': 'error',
-			'simple-import-sort/exports': 'off',
-		},
-	},
+    {
+        plugins: { 'simple-import-sort': eslintPluginSimpleImportSort },
+        rules: {
+            'simple-import-sort/imports': 'error',
+            'simple-import-sort/exports': 'off',
+        },
+    },
 ]);
